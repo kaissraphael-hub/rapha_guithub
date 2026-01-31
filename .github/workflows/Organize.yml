@@ -13,11 +13,10 @@ jobs:
       - name: Install PyInstaller
         run: pip install pyinstaller
       - name: Build EXE
-        run: |
-          # Se o seu arquivo de organizar tiver outro nome, mude aqui:
-          pyinstaller --onefile --console --name "OrganizadorPastas" organizar_pastas.py
-      - name: Upload
+        # AQUI: Se o seu arquivo de organizar tiver outro nome no GitHub, mude 'organizar.py' abaixo
+        run: pyinstaller --onefile --console --name "Organizador_Rapha" organizar_pastas.py
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Organizador-Windows
-          path: dist/OrganizadorPastas.exe
+          path: dist/Organizador_Rapha.exe
