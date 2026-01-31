@@ -1,0 +1,23 @@
+name: Criar Executavel Windows
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          pip install pandas openpyxl PyPDF2 tqdm pyinstaller
+      - name: Build EXE
+        run: |
+          pyinstaller --onefile --console --name "SuperMinerador" seu_script.py
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Executavel-Windows
+          path: dist/SuperMinerador.exe
