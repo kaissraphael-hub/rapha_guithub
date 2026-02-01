@@ -1,0 +1,23 @@
+name: Gerar Executável Windows
+on:
+  push:
+    branches: [ main, principal ] # Aceita os dois nomes para não ter erro
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install dependencies
+      run: pip install PyQt5 pyinstaller
+    - name: Build EXE
+      run: pyinstaller --noconsole --onefile --clean dashboard_rapha.py
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: Dashboard-SESA-Windows
+        path: dist/*.exe
