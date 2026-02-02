@@ -19,5 +19,5 @@ jobs:
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
-        name: Dashboard-SESA-Windows
+        name: PROGRAMA-RAPHA-Windows
         path: dist/*.exe
